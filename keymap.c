@@ -27,6 +27,8 @@ enum layers
 
 #define KC_CPYP LGUI(LSFT(LCTL(KC_4)))  // Copy portion of screen in macos
 #define KC_GUISFT LGUI(KC_LSFT)  // Command+shift
+#define KC_PREVVSCODE LCTL(KC_PMNS)  // Command+shift
+#define KC_NEXTVSCODE LCTL(LSFT(KC_PMNS))  // Command+shift
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -34,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,         KC_W,    KC_F,    KC_P,    KC_G,                                                   KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,
         KC_A,         KC_R,    KC_S,    KC_T,    KC_D,                                                   KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
         LALT_T(KC_Z), KC_X,    KC_C,    KC_V,    KC_B,                                                   KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
-                        LSFT_T(KC_CAPS), LCTL_T(KC_SPC), LGUI_T(KC_TAB),     LT(_NUM, KC_BSPC), LT(_NAV,KC_ENT), LT(_SYM,KC_PSLS)         
+                        LSFT_T(KC_CAPS), LGUI_T(KC_SPC), LCTL_T(KC_TAB),     LT(_NUM, KC_BSPC), LT(_NAV,KC_ENT), LT(_SYM,KC_PSLS)         
     ),    
     [_SYM] = LAYOUT(
         KC_GRV , KC_CIRC,   KC_AT,  KC_DLR, KC_TILD,                                KC_AMPR, KC_EXLM, KC_PIPE, XXXXXXX, KC_HASH,
@@ -45,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT(
         KC_CPYP, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX,                                XXXXXXX, KC_PGDN,   KC_UP, KC_PGUP,  KC_DEL,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_GUISFT,                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_GUISFT,                                XXXXXXX, KC_PREVVSCODE, XXXXXXX, KC_NEXTVSCODE, XXXXXXX,
                                         _______, _______, _______,      _______, _______, _______         
     ),
     [_NUM] = LAYOUT(
