@@ -29,31 +29,34 @@ enum layers
 #define KC_GUISFT LGUI(KC_LSFT)  // Command+shift
 #define KC_PREVVSCODE LCTL(KC_PMNS)  // Command+shift
 #define KC_NEXTVSCODE LCTL(LSFT(KC_PMNS))  // Command+shift
-
+#define KC_COPY LCTL(KC_INS)  // Control+insert
+#define KC_PASTE LSFT(KC_INS)  // Shift+insert
+#define KC_UNDO LGUI(KC_Z)  // Command+Z
+#define KC_REDO LGUI(LSFT(KC_Z))  // Command+Z
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_ALPHA_COLEMAK] = LAYOUT(
+    [_ALPHA_COLEMAK] = LAYOUT( 
         KC_Q,         KC_W,    KC_F,    KC_P,    KC_G,                                                   KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,
-        KC_A,         KC_R,    KC_S,    KC_T,    KC_D,                                                   KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
-        LALT_T(KC_Z), KC_X,    KC_C,    KC_V,    KC_B,                                                   KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
-                        LSFT_T(KC_CAPS), LGUI_T(KC_SPC), LCTL_T(KC_TAB),     LT(_NUM, KC_BSPC), LT(_NAV,KC_ENT), LT(_SYM,KC_PSLS)         
-    ),    
+        LSFT_T(KC_A), LGUI_T(KC_R),    LALT_T(KC_S),    LCTL_T(KC_T),    KC_D,                           KC_H,    LCTL_T(KC_N),   LALT_T(KC_E),    LGUI_T(KC_I),    LSFT_T(KC_O),
+        KC_Z,         KC_X,            KC_C,            KC_V,            KC_B,                           KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_PSLS,
+                        LT(_SYM, KC_ESC), LT(_NAV,KC_SPC), LT(_NUM,KC_TAB),     LT(_NUM, KC_BSPC), LT(_NAV,KC_ENT), LT(_SYM,KC_DEL)         
+    ),
     [_SYM] = LAYOUT(
-        KC_GRV , KC_CIRC,   KC_AT,  KC_DLR, KC_TILD,                                KC_AMPR, KC_EXLM, KC_PIPE, XXXXXXX, KC_HASH,
-        KC_SLSH, KC_LBRC, KC_LCBR, KC_LPRN,  KC_EQL,                                KC_ASTR, KC_RPRN, KC_RCBR, KC_RBRC, KC_BSLS, 
-        _______, KC_QUES, KC_PLUS, KC_PERC, XXXXXXX,                                XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, _______,
+        KC_GRV , KC_CIRC,   KC_AT,  KC_DLR, KC_TILD,                                    KC_AMPR, KC_EXLM, KC_PIPE, XXXXXXX, KC_HASH,
+        LSFT_T(KC_SLSH), LGUI_T(KC_LBRC), LALT_T(KC_LCBR), LCTL_T(KC_LPRN),  KC_EQL,    KC_ASTR, LCTL_T(KC_RPRN), LALT_T(KC_RCBR), LGUI_T(KC_RBRC), LSFT_T(KC_BSLS), 
+        XXXXXXX, KC_QUES, KC_PLUS, KC_PERC, XXXXXXX,                                    XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, XXXXXXX,
                                         _______, _______, _______,     _______, _______, _______         
     ),
     [_NAV] = LAYOUT(
-        KC_CPYP, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX,                                XXXXXXX, KC_PGDN,   KC_UP, KC_PGUP,  KC_DEL,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_GUISFT,                                XXXXXXX, KC_PREVVSCODE, XXXXXXX, KC_NEXTVSCODE, XXXXXXX,
+        KC_CPYP, KC_UNDO, KC_REDO, KC_COPY, KC_PASTE,                            KC_PASTE, KC_COPY, KC_UP, KC_PGDN, KC_PGUP,
+        KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                             KC_HOME, KC_LEFT,       KC_DOWN, KC_RGHT,  KC_END,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_GUISFT,                           XXXXXXX, KC_PREVVSCODE, XXXXXXX, KC_NEXTVSCODE, XXXXXXX,
                                         _______, _______, _______,      _______, _______, _______         
-    ),
+    ), 
     [_NUM] = LAYOUT(
         XXXXXXX,  KC_F9, KC_F10, KC_F11, KC_F12,                                    KC_PPLS,  KC_7,  KC_8,  KC_9, KC_SCLN,
-        XXXXXXX,  KC_F5,  KC_F6,  KC_F7,  KC_F8,                                    KC_0,  KC_4,  KC_5,  KC_6, KC_UNDS,
-        _______,  KC_F1,  KC_F2,  KC_F3,  KC_F4,                                    KC_PMNS,  KC_1,  KC_2,  KC_3, KC_PAST,
+        KC_LSFT,  LGUI_T(KC_F5),  LALT_T(KC_F6),  LCTL_T(KC_F7),  KC_F8,               KC_0,  LCTL_T(KC_4),  LALT_T(KC_5),  LGUI_T(KC_6), LSFT_T(KC_UNDS),
+        XXXXXXX,  KC_F1,  KC_F2,  KC_F3,  KC_F4,                                    KC_PMNS,  KC_1,  KC_2,  KC_3, KC_PAST,
                                         _______, _______, _______,      _______, _______, _______
     ),
 };
