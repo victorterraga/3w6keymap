@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum layers
 {
     _ALPHA_COLEMAK = 0,
+    _ALPHA_QWERTY,
     _SYM,
     _NAV,
     _NUM,
@@ -44,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYM] = LAYOUT(
         KC_GRV , KC_CIRC,   KC_AT,  KC_DLR, KC_TILD,                                    KC_AMPR, KC_EXLM, KC_PIPE, XXXXXXX, KC_HASH,
         KC_SLSH, KC_LBRC, KC_LCBR, KC_LPRN,  KC_EQL,                                    KC_ASTR, KC_RPRN, KC_RCBR, KC_RBRC, KC_BSLS, 
-        XXXXXXX, KC_QUES, KC_PLUS, KC_PERC, XXXXXXX,                                    XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, XXXXXXX,
+        KC_COLN, KC_QUES, KC_PLUS, KC_PERC, XXXXXXX,                                    XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, XXXXXXX,
                                         _______, _______, _______,     _______, _______, _______         
     ),
     [_NAV] = LAYOUT(
@@ -54,9 +55,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______,      _______, _______, _______         
     ), 
     [_NUM] = LAYOUT(
-        XXXXXXX,  KC_F9, KC_F10, KC_F11, KC_F12,                                    KC_PPLS,  KC_7,  KC_8,  KC_9, KC_SCLN,
-        XXXXXXX,  KC_F5,  KC_F6,  KC_F7,  KC_F8,                                    KC_0,  KC_4,  KC_5,  KC_6, KC_UNDS,
+        DF(_ALPHA_QWERTY),  KC_F9, KC_F10, KC_F11, KC_F12,                                    KC_PPLS,  KC_7,  KC_8,  KC_9, KC_SCLN,
+        DF(_ALPHA_COLEMAK),  KC_F5,  KC_F6,  KC_F7,  KC_F8,                                    KC_0,  KC_4,  KC_5,  KC_6, KC_UNDS,
         XXXXXXX,  KC_F1,  KC_F2,  KC_F3,  KC_F4,                                    KC_PMNS,  KC_1,  KC_2,  KC_3, KC_PAST,
                                         _______, _______, _______,      _______, _______, _______
     ),
+    [_ALPHA_QWERTY] = LAYOUT(
+        KC_Q,         KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  
+        LSFT_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D), LCTL_T(KC_F), KC_G,            KC_H,    LCTL_T(KC_J),    LALT_T(KC_K),    LGUI_T(KC_L),    LSFT_T(KC_SCLN),
+        KC_Z, KC_X,    KC_C,    KC_V,    KC_B,                                  KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
+
+                        LT(_SYM, KC_ESC), LT(_NAV,KC_SPC), LT(_NUM,KC_TAB),     LT(_NUM, KC_BSPC), LT(_NAV,KC_ENT), LT(_SYM,KC_DEL)         
+    )
 };
